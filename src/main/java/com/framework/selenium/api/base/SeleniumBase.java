@@ -1,7 +1,6 @@
 package com.framework.selenium.api.base;
 
-import java.awt.Robot;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -960,6 +959,32 @@ public class SeleniumBase extends Reporter implements Browser, Element {
 			reportStep("The file is not selected Successfully", "fail");
 		}
 
+	}
+
+	public void rightClickAndSaveImage(WebElement ele, String data) throws InterruptedException, AWTException {
+		act = new Actions(getDriver());
+		act.contextClick(getWait().until(ExpectedConditions.elementToBeClickable(ele))).perform();
+		act.sendKeys(Keys.CONTROL, "v").build().perform();
+		Thread.sleep(3000);
+
+		// Store the copied text in the clipboard
+		StringSelection stringSelection = new StringSelection(data);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+
+// Paste it using Robot class
+		Robot robot = new Robot();
+
+		// Enter to confirm it is uploaded
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+
+		Thread.sleep(5000);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		reportStep("The file is saved Successfully", "pass");
 	}
 
 	public void fileUploadWithJs(WebElement ele, String data) {

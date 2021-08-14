@@ -31,6 +31,11 @@ public class HomePage extends SeleniumBase {
 		return new SalesPage();
 	}
 
+	public ServicePage clickService() {
+		click(Locators.XPATH, "//p[text()='Service']");
+		return new ServicePage();
+	}
+
 	/*
 	 * @author Swami This method click on the Contact Request link on the App
 	 * Launcher modal
