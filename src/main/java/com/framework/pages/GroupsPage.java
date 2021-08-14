@@ -204,7 +204,7 @@ public class GroupsPage extends SeleniumBase {
 	 */	
 	public void verifyAlertforGroupsWithoutMndtryFlds() {
 		
-		String expectedErrorMsg = "These required fields must be completed: Access Type";
+		String expectedErrorMsg = "These required fields must be completed: Access Type, Name";
 		WebElement elemErrorMessage = getDriver().findElement(By.xpath("//ul[@class='errorsList']/li"));
 		Boolean boolError = elemErrorMessage.isDisplayed();
 		if (boolError) {
