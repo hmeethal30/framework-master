@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.framework.testcase;
 
 
@@ -38,3 +39,45 @@ public class CreateIndividualTest extends ProjectSpecificMethods{
 	}
 
 }
+=======
+package com.framework.testcase;
+
+
+import com.framework.selenium.api.base.SeleniumBase;
+import org.testng.annotations.Test;
+import org.testng.annotations.*;
+import com.framework.pages.*;
+import com.framework.testng.api.base.*;
+
+
+public class CreateIndividualTest extends ProjectSpecificMethods{
+	
+	  @BeforeTest	
+	  public void setTest() { 
+		testcaseName = "Create Individuals" ; 
+		testDescription = "This testcase creates an Individual";
+		category = "Regression";
+		authors = "Selva";
+		excelFileName = "";	  
+	  }
+	 
+	
+	@Test
+	public void createIndividual(){
+		
+		 new LoginPage()		
+		.typeUserName()
+		.typePassword()
+		.clickLogin()
+		.clickApplauncher()
+		.clickViewAll()
+		.click_Individuals()
+		.click_New()
+		.enter_LastName("Kumar")
+		.click_Save()
+		.verifyIndividualName();
+		
+	}
+
+}
+>>>>>>> 9529103d6d51341f8de5c8d21d5a06d95ff8f512
